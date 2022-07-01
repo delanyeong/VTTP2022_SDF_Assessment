@@ -13,7 +13,7 @@ public class ClientMain {
 
             //Connect to the server
             //1.Create socket
-            Socket sock = new Socket("task02.chuklee.com", 80);
+            Socket sock = new Socket("68.183.239.26", 80);
 
             // 1b. Connected
             System.out.println("Connected ...");
@@ -41,6 +41,8 @@ public class ClientMain {
                 System.out.println("reached");
                 resp = netIO.read();
                 System.out.printf(">> %s\n", resp);
+
+                
                 
 
                 
