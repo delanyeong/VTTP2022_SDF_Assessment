@@ -1,5 +1,6 @@
 package vttp2022.task01;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,7 +8,9 @@ import java.util.Map;
 
 public class EmailMerger {
     
-    private Map<String, List<List<String>>> dataSet = new HashMap<>(); 
+    private Map<String, ArrayList<String>> dataSet = new HashMap<>(); 
+
+
 
     
     public void read(String data) {
@@ -20,25 +23,35 @@ public class EmailMerger {
     String address = fields[2];
     String years = fields[3];
 
-    addToReport(firstName, lastName, address, years);
+    addToTable(firstName, lastName, address, years);
 
     }
 
-    private void addToReport(String firstName, String lastName, String address, String years) {
+    public void generateTable() {
+        for (String firstName: dataSet.keySet()) {
+            ArrayList<String> entry = dataSet.get(firstName);
+            String lastName1 = entry.get(0);
+            String address1 = entry.get(1);
+            String years1 = entry.get(2);
+            System.out.printf("First Name: %s\n", firstName);
+            System.out.printf("\tMath: %.3f\n", lastName1);
+            System.out.printf("\tReading: %.3f\n", address1);
+            System.out.printf("\tWriting: %.3f\n\n", years1);
+        }
+    }
+
+    private void addToTable(String firstName, String lastName, String address, String years) {
         if (!dataSet.containsKey(firstName)) {
             dataSet.put(firstName, mkEntry());
         }
-        List<List<String>> entry = dataSet.get(firstName);
-        entry.get(0).add(lastName);
-        entry.get(1).add(address);
-        entry.get(2).add(years);
+        ArrayList<String> entry = dataSet.get(firstName);
+        entry.add(0, lastName);
+        entry.add(1, address);
+        entry.add(2, years);
     }
 
-    private List<List<String>> mkEntry() {
-        List<List<String>> catList = new LinkedList<>();
-        // 0 - lastName, 1 - address, 2 -year
-        for (int i = 0; i < 3; i++)
-            catList.add(new LinkedList<String>());
+    private ArrayList<String> mkEntry() {
+        ArrayList<String> catList = new ArrayList<>();
         return catList;
     }
 

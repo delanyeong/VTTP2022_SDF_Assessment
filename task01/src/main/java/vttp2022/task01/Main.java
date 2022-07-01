@@ -14,6 +14,7 @@ public class Main
         String csvFile = args[0];
 
         //Create the emailMerger object
+        EmailMerger merger = new EmailMerger();
 
         //readFile
         Reader r = new FileReader(csvFile);
@@ -28,6 +29,10 @@ public class Main
             data = br.readLine();
             System.out.println(data);
         }
+
+        merger.generateTable();
+        
+        
 
         br.close();
     }
