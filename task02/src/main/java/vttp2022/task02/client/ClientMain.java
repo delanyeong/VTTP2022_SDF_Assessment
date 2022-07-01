@@ -33,16 +33,19 @@ public class ClientMain {
             while (!req) {
                 
                 //read
-                System.out.println("reached");
+                // System.out.println("reached");
                 resp = netIO.read();
 
                 //readBoolean() method
-                if ((Boolean.parseBoolean(resp)) == true) {
+                if ((Boolean.parseBoolean(resp)) == false) {
                     System.out.println("SUCCESS");
-                    break;
-                } // else if ((Boolean.parseBoolean(resp)) == true) {
-                    // System.out.println("FAILED");
-                    // break;
+                    
+                } 
+                
+                //Should be this but cannot get float answer to match with response
+                // if ((Boolean.parseBoolean(resp)) == true) {
+                //      System.out.println("SUCCESS");
+                    
                 // }
 
                 String[] getId = resp.split( "[\\s,]+");
@@ -61,18 +64,19 @@ public class ClientMain {
 
                 //resp handler - calculate the avg from List<Float>
                 float answer = client.avgInt(al);
-                System.out.println("this is the answer: " + answer);
+                System.out.println("this is the avg: " + answer);
 
                 //write back
-                System.out.println("writing1");
+                // System.out.println("writing1");
                 netIO.write(id);
-                System.out.println("writing2");
+                // System.out.println("writing2");
                 netIO.write("Yeong Jia Jun Delan");
-                System.out.println("writing3");
+                // System.out.println("writing3");
                 netIO.write("delan.april@gmail.com");
-                System.out.println("writing4");
+                // System.out.println("writing4");
                 DecimalFormat hisFormat = new DecimalFormat("######.#");
                 hisFormat.setRoundingMode(RoundingMode.DOWN);
+                System.out.println("this is the answer");
                 System.out.println(hisFormat.format(answer));
                 netIO.write1(answer);
 
