@@ -40,6 +40,12 @@ public class NetworkIO {
         oos.flush();
     }
 
+    public void write1 (float answer) throws IOException{
+        oos.writeFloat(answer);
+        oos.flush();
+    }
+
+
     public void close () throws IOException{
         try {
             ois.close();
