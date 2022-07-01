@@ -18,10 +18,13 @@ public class NetworkIO {
     
     //Constructor
     public NetworkIO (Socket sock) throws IOException {
-        is = sock.getInputStream();
-        ois = new ObjectInputStream(is);
         os = sock.getOutputStream();
+
         oos = new ObjectOutputStream(os);
+        
+        is = sock.getInputStream();
+        
+        ois = new ObjectInputStream(is);
     }
 
     //Methods
