@@ -26,23 +26,11 @@ public class ClientMain {
             NetworkIO netIO = new NetworkIO(sock);
             
             //Before WHILE Loop
-            // String req = "";
             boolean req = false;
-            String resp = "";   //first case: set neutral value
-            Console cons = System.console();
+            String resp = "";
 
             //WHILE Loop - you want to read, write, exit
-            // while (!req.equals("exit")) {
             while (!req) {
-
-                // req = cons.readLine("> "); //scan.nextLine();
-
-                // //exit
-                // if (req.trim().equals("exit"))
-                // break; //break out of the closest loop
-                
-                // //write - have to Write FIRST!!!
-                // netIO.write(req);
                 
                 //read
                 System.out.println("reached");
@@ -52,7 +40,10 @@ public class ClientMain {
                 if ((Boolean.parseBoolean(resp)) == true) {
                     System.out.println("SUCCESS");
                     break;
-                }
+                } // else if ((Boolean.parseBoolean(resp)) == true) {
+                    // System.out.println("FAILED");
+                    // break;
+                // }
 
                 String[] getId = resp.split( "[\\s,]+");
                 String id = getId[0];
